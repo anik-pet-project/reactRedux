@@ -1086,3 +1086,20 @@ Object.prototype.extend = function(object) {
 };
 
 defaults.extend(options);
+
+function string_chop(str, n) {
+  if (n === undefined) {return str;}
+  var res = [];
+  for (var i = 0; i < str.length; i +=n) {
+      res.push(str.slice(i, i+n));
+  }
+  return res;
+}
+
+const myMap = (array, fn) => {
+  const answer = [];
+  for (let i = 0; i < array.length; i++) {
+    answer.push(fn(array[i]));
+  }
+  return answer;
+};
