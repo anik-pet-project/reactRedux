@@ -322,6 +322,7 @@ function find_FirstNotRepeatedChar(str) {
       break;
     }
   }
+}
 
   function firstNotRepeated(str) {
     for (let i = 0; i < str.length; i++) {
@@ -443,6 +444,20 @@ String.prototype.sub_String = function()
     for (var n = m+1; n<this.length+1; n++)
     {
       subset.push(this.slice(m,n));
+    }
+  }
+  return subset;
+};
+
+//[1, 2, 3] : [[2, 1], [3, 1], [3, 2], [3, 2, 1]]
+function sub(arr)
+{
+  var subset = [];
+  for (var m = 0; m < arr.length-1; m++)
+  {
+    for (var n = m+1; n<arr.length; n++)
+    {
+      subset.push([arr[n],arr[m]]);
     }
   }
   return subset;
@@ -1377,7 +1392,7 @@ function distSameLetter(s) {
   return element + (max + 1);
 }
 
-function TicTacToe(board) {r
+function TicTacToe(board) {
   var x = 0;
   var o = 0;
   var empty = 0;
@@ -1627,4 +1642,32 @@ while(a.length>len){
 len++
 }
 return a
+}
+//addg(1)(2)(2)(3)()
+function addg(first) {
+    function more(next) {
+        if (next === undefined) {
+            return first;
+        }
+        first += next;
+        return more;
+    }
+    if (first !== undefined) {
+        return more;
+    }
+}
+//liftg(mul)(1)(2)(3)()
+function liftg(binary) {
+    return function (first) {
+        if (first === undefined) {
+            return first;
+        }
+        return function more(next) {
+            if (next === undefined) {
+                return first;
+            }
+            first = binary(first, next);
+            return more;
+        };
+    };
 }
